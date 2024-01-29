@@ -42,9 +42,18 @@ namespace NIOP_Fitness.Forme
         private void button3_Click(object sender, EventArgs e)
         {
             //izmjeni button
-            itemIndex = listBox1.SelectedIndex;
-            new izmjeniVjezbe().ShowDialog();
-            Close();
+
+            if (listBox1.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select an Item first!");
+            }
+            else
+            {
+                itemIndex = listBox1.SelectedIndex;
+                new izmjeniVjezbe().ShowDialog();
+                Close();
+            }
+
         }
 
         private void button4_Click(object sender, EventArgs e)

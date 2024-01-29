@@ -21,8 +21,6 @@ namespace NIOP_Fitness
             
         }
 
-
-
 //funkcije koje koristimo za ubacivanje novih vjezbi i osoba
         public void DodavanjeVjezbe(String vjezba1)
         {
