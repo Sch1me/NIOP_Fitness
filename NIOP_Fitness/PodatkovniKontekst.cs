@@ -71,7 +71,16 @@ namespace NIOP_Fitness
             }
             streamWriterOsoba.Close();
         }
+        public void SpremanjeVjezbe(List<String> lista)
+        {
+            StreamWriter streamWriterVjezbe = new StreamWriter("Popis Vjezbi.txt");
+            foreach (string a in lista)
+            {
+                streamWriterVjezbe.WriteLine(a);
+            }
 
+            streamWriterVjezbe.Close();
+        }
         public void DodavanjeTreninga()
         {
             //upitno kako napraviti

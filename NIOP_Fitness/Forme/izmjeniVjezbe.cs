@@ -12,9 +12,15 @@ namespace NIOP_Fitness.Forme
 {
     public partial class izmjeniVjezbe : Form
     {
+        int index;
         public izmjeniVjezbe()
         {
             InitializeComponent();
+        }
+        public izmjeniVjezbe(int indexPomoc)
+        {
+            InitializeComponent();
+            index = indexPomoc;
         }
 
         private void izmjeniButton_Click(object sender, EventArgs e)
@@ -25,35 +31,14 @@ namespace NIOP_Fitness.Forme
             List<string> popisVjezbi = podatkovniKontekstVjezbe.DohvacanjeVjezbe();
             String variabla = $"{imeTextBox.Text} - {ponavljanjaTextBox.Text} - {serijeTextBox.Text} - {vrstaVjezbeTextBox.Text}";
 
-            int index = uzmiIndex();
+            popisVjezbi[index] = variabla;
 
-            while(i != index)
-            {
-                //izjednaci i sa indexom
-                i++;
-            }
-            if(i == index)
-            {
-                popisVjezbi[i] = variabla;
-            }
-            j = i;
-            i = 0;
-            while (j >= 0)
-            {
-                podatkovniKontekstVjezbe.DodavanjeVjezbe(popisVjezbi[i]);
-                i++;
-                j--;
-            }
-        }
-        private int uzmiIndex()
-        {
-            Vjezbe vjezbe = new Vjezbe();
-            int itemIndex = vjezbe.itemIndex;
-            return itemIndex;
+            podatkovniKontekstVjezbe.SpremanjeVjezbe(popisVjezbi);
+
         }
         private void nazadButton_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
         private void imeTextBox_TextChanged(object sender, EventArgs e)

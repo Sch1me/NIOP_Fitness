@@ -28,15 +28,16 @@ namespace NIOP_Fitness.Forme
         {
             //dodaj vjezbu button
             PodatkovniKontekst podatkovniKontekstVjezbe = new PodatkovniKontekst();
-            if(textBox1 == null || textBox2 == null || textBox3 == null || textBox3 == null)
+            if (textBox1 == null || textBox2 == null || textBox3 == null || textBox3 == null)
             {
                 MessageBox.Show("Nisi unio sve");
             }
-            else {
+            else
+            {
                 String varijabla = $"{textBox1.Text} - {textBox2.Text} - {textBox4.Text} - {textBox3.Text}";
                 podatkovniKontekstVjezbe.DodavanjeVjezbe(varijabla);
             }
-            
+
         }
 
         private void textBox1_Click(object sender, EventArgs e)

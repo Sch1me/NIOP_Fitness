@@ -36,6 +36,25 @@ namespace NIOP_Fitness.Forme
         private void button2_Click(object sender, EventArgs e)
         {
             //obrisi osobu
+            PodatkovniKontekst podatkovnikontekstOsobe = new PodatkovniKontekst();
+            IEnumerable<string> osobe = podatkovnikontekstOsobe.DohvacanjeOsoba();
+            List<String> listaOsoba= new List<String>();
+            int indexOsobe;
+            int i = 0;
+            indexOsobe = listBox1.SelectedIndex;
+
+            foreach(String a in osobe)
+            {
+                
+                if (i != indexOsobe)
+                {
+                    listaOsoba.Add(a);
+                }
+                i++;
+            }
+            podatkovnikontekstOsobe.SpremanjeOsobe(listaOsoba);
+            Close();
+            
         }
 
         private void button3_Click(object sender, EventArgs e)

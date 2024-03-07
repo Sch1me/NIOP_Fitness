@@ -20,9 +20,9 @@ namespace NIOP_Fitness.Forme
         {
             InitializeComponent();
             PodatkovniKontekst podatkovniKontekstVjezbe = new PodatkovniKontekst();
-            IEnumerable<string> popisVjezbi = podatkovniKontekstVjezbe.DohvacanjeVjezbe();
+            IEnumerable<string> vjezbe = podatkovniKontekstVjezbe.DohvacanjeVjezbe();
 
-            foreach (string vjezba in popisVjezbi) listBox1.Items.Add(vjezba);
+            foreach (string a in vjezbe) listBox1.Items.Add(a);
 
 
         }
@@ -37,6 +37,24 @@ namespace NIOP_Fitness.Forme
         private void button2_Click(object sender, EventArgs e)
         {
             //obrisi button
+            PodatkovniKontekst podatkovniKontekstVjezbe = new PodatkovniKontekst();
+            IEnumerable<string> vjezbe = podatkovniKontekstVjezbe.DohvacanjeVjezbe();
+            List<String> listaVjezbi = new List<String>();
+            int indexOsobe;
+            int i = 0;
+            indexOsobe = listBox1.SelectedIndex;
+
+            foreach (String a in vjezbe)
+            {
+
+                if (i != indexOsobe)
+                {
+                    listaVjezbi.Add(a);
+                }
+                i++;
+            }
+            podatkovniKontekstVjezbe.SpremanjeVjezbe(listaVjezbi);
+            Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -50,7 +68,7 @@ namespace NIOP_Fitness.Forme
             else
             {
                 itemIndex = listBox1.SelectedIndex;
-                new izmjeniVjezbe().ShowDialog();
+                new izmjeniVjezbe(itemIndex).ShowDialog();
                 Close();
             }
 
