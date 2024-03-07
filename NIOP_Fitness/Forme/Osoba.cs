@@ -24,7 +24,6 @@ namespace NIOP_Fitness.Forme
 
             foreach (string osoba in osobe) listBox1.Items.Add(osoba);
 
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -49,7 +48,7 @@ namespace NIOP_Fitness.Forme
             else
             {
                 itemIndex = listBox1.SelectedIndex;
-                new izmjeniOsobe().ShowDialog();
+                new izmjeniOsobe(itemIndex).ShowDialog();
                 Close();
             }
 

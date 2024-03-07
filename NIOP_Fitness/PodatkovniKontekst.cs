@@ -40,6 +40,8 @@ namespace NIOP_Fitness
             
             streamWriterVjezbe.Close();
         }
+
+
         public void DodavanjeOsobe(String osoba1)
         {
             //cita iz datoteke i sprema u polje
@@ -59,10 +61,23 @@ namespace NIOP_Fitness
             }
             streamWriterOsoba.Close();
         }
+
+        public void SpremanjeOsobe(List<String> lista)
+        {
+            StreamWriter streamWriterOsoba = new StreamWriter("Popis Osoba.txt");
+            foreach (string a in lista)
+            {
+                streamWriterOsoba.WriteLine(a);
+            }
+            streamWriterOsoba.Close();
+        }
+
         public void DodavanjeTreninga()
         {
             //upitno kako napraviti
         }
+
+
         public List<string> DohvacanjeVjezbe()
         {
             int i = 0;

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,14 +13,23 @@ namespace NIOP_Fitness.Forme
 {
     public partial class izmjeniOsobe : Form
     {
+        int index;
         public izmjeniOsobe()
         {
             InitializeComponent();
+            
+        }
+        public izmjeniOsobe(int indexPomoc)
+        {
+            InitializeComponent();
+            index = indexPomoc;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //nazad button
+            Close();
 
         }
 
@@ -51,31 +61,11 @@ namespace NIOP_Fitness.Forme
             List<string> popisOsoba = podatkovniKontekstOsobe.DohvacanjeOsoba();
             String variabla = $"{textBox1.Text} - {prezimeTextBox.Text} - {OIBTxtBox.Text} - {godineTxtBox.Text}";
 
-            int index = uzmiIndex();
+            popisOsoba[index] = variabla;
 
-            while (i != index)
-            {
-                //izjednaci i sa indexom
-                i++;
-            }
-            if (i == index)
-            {
-                popisOsoba[i] = variabla;
-            }
-            j = i;
-            i = 0;
-            while (j >= 0)
-            {
-                podatkovniKontekstOsobe.DodavanjeOsobe(popisOsoba[i]);
-                i++;
-                j--;
-            }
+            podatkovniKontekstOsobe.SpremanjeOsobe(popisOsoba);
+
         }
-        private int uzmiIndex()
-        {
-            Osoba osobe = new Osoba();
-            int itemIndex = osobe.itemIndex;
-            return itemIndex;
-        }
+       
     }
 }
